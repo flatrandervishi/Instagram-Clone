@@ -1,0 +1,28 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+html body{
+    box-sizing: border-box;
+}
+
+@font-face{
+    font-family: "Icon";
+    src: url("/style/icons/icomoon.ttf");
+}
+
+.nav{
+    padding: 30px;
+    display: flex;
+}
+
+.nav-ikona{
+    font-family: "Icon";
+    font-size: 30px;
+}
+
+.nav-instagram{
+    padding-left: 10px;
+    width: 120px;
+}
