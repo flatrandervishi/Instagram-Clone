@@ -1,28 +1,284 @@
-*{
+/*
+
+0       - 600px:        Phone
+600px   - 900px         Tablet portrait
+900ox   - 1200px        Tablet landscape
+[1200px - 1800px]       is where our normal style apply
+1800px +                Big desktop 
+
+$breakpoint argument choices
+-phone
+- tab-port
+- tab-land
+- big-desktop
+
+1em=16px
+
+1-- 600/16px=37.5em
+2-- 900/16px=56.25em
+3-- 1200/16px=75em
+4-- 1800/16px=112.5em
+
+ORDER:  Base + typography > general layout + grid > page layout > components
+
+*/
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+@media only screen and (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+
+@media only screen and (max-width: 56.25em) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media only screen and (min-width: 112.5em) {
+  html {
+    font-size: 75%;
+  }
+}
+
+@media only screen and (max-width: 56.25em) {
+  body {
     padding: 0;
-    margin: 0;
+  }
 }
 
-html body{
-    box-sizing: border-box;
+::selection {
+  background-color: #de4ff1;
+  color: #fff;
 }
 
-@font-face{
-    font-family: "Icon";
-    src: url("/style/icons/icomoon.ttf");
+@font-face {
+  font-family: "Icon";
+  src: url("/style/icons/icomoon.ttf");
 }
 
-.nav{
-    padding: 30px;
-    display: flex;
+body {
+  font-family: "Lato" serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgb(0, 0, 0);
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-.nav-ikona{
-    font-family: "Icon";
-    font-size: 30px;
+/* Div Kryesor */
+.container {
+  display: grid;
+  grid-template-columns: 0.7fr 1.8fr 0.5fr;
+  grid-template-rows: 0.4fr 0.8fr 1.8fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
 }
 
-.nav-instagram{
-    padding-left: 10px;
-    width: 120px;
+/* Logoja e Instagramit */
+.logo {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  background-color: rgb(255, 255, 255);
+  padding: 3rem;
+  padding-left: 6rem;
+  display: flex;
+  align-items: center;
+}
+
+.logo-icon {
+  font-family: "Icon";
+  font-size: 3.5rem;
+}
+
+.logo-instagram {
+  width: 13rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+/* Nav Inputi*/
+.input {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  background-color: rgb(255, 255, 255);
+  padding: 4rem 2rem;
+  align-items: center;
+  display: flex;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50rem;
+  margin-right: 2rem;
+}
+
+.search__input {
+  color: rgb(167, 162, 162);
+  background-color: #e2dfdf;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 100px;
+  width: 90%;
+  transition: all 0.2s;
+  margin-right: -3.25rem;
+  margin-top: -0.4rem;
+}
+.search__input:focus {
+  outline: none;
+  width: 100%;
+  background-color: #e2dfdf;
+}
+
+.search__input:focus + .search__button {
+  background-color: var(--color-grey-light-3);
+}
+.search__button {
+  border: none;
+  background-color: var(--color-grey-light-2);
+}
+.search__button:focus {
+  outline: none;
+}
+.search__button:active {
+  transform: translateY(2px);
+}
+.search__icon {
+  height: 2rem;
+  width: 2rem;
+  fill: #9b9999;
+}
+
+/* Input Butoni */
+.cssbuttons-io-button {
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 1.6rem;
+  padding: 0.5em 1.4em 0.5em 1.1em;
+  color: white;
+  background: #ad5389;
+  background: linear-gradient(
+    40deg,
+    rgb(240, 163, 21) 0%,
+    rgb(209, 62, 235) 100%
+  );
+  border: none;
+  box-shadow: 0 0.7em 1.5em -0.5em #a7aaa898;
+  letter-spacing: 0.05em;
+  border-radius: 20em;
+}
+
+.cssbuttons-io-button svg {
+  margin-right: 6px;
+}
+
+.cssbuttons-io-button:hover {
+  box-shadow: 0 0.5em 1.5em -0.5em #14a73e98;
+}
+
+.cssbuttons-io-button:active {
+  box-shadow: 0 0.3em 1em -0.5em #14a73e98;
+}
+
+/* Ikonat dhe Hamburger Menu */
+.icons {
+  grid-column: 3/4;
+  grid-row: 1/2;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  padding: 4rem 4rem;
+}
+
+.logo-icons {
+  width: 4.6rem;
+  height: 4.5rem;
+  font-family: "Icon";
+  font-size: 2.8rem;
+}
+
+.logo-icons:not(:last-child) {
+  padding-left: 0.8rem;
+  margin-right: 2.5rem;
+  background-color: rgb(235, 235, 235);
+}
+
+.rounded {
+  border: 1px solid #e2dfdf;
+  border-radius: 50%;
+}
+
+/* User Profile */
+.user {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+
+.user-img {
+  width: 8rem;
+  border-radius: 50%;
+  border: 3px solid rgb(209, 62, 235);
+  /* linear-gradient(180deg, rgb(240, 163, 21) 0%, rgb(209, 62, 235) 100%); */
+  margin: 2rem 12rem 0rem;
+}
+
+.heading-primary,
+.heading-secondary {
+  text-align: center;
+}
+
+.heading-primary {
+  font-size: 1.5rem;
+}
+
+.heading-secondary {
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: rgb(117, 117, 117);
+}
+
+/* User Medias */
+.user-media {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 3rem;
+}
+
+.user-num {
+  display: flex;
+  font-size: 1.4rem;
+  padding-left: 5.5rem;
+}
+
+.num:not(:last-child) {
+  margin-right: 2.8rem;
+}
+
+.user-post {
+  display: flex;
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: rgb(117, 117, 117);
+  font-weight: 300;
+  padding-left: 5rem;
+}
+
+.post:not(:last-child) {
+  margin-right: 1rem;
 }
